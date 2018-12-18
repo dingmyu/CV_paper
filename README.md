@@ -1,5 +1,6 @@
 ### **NIPS2018**&nbsp;&nbsp; Neighbourhood Consensus Networks
-> 采用neighbourhood consensus or more broadly as semi-local constraints.邻域共识，半局部约束，解决同样的纹理，比如墙面特征相同而无法选取特征点的问题。
+> 采用neighbourhood consensus or more broadly as semi-local constraints.邻域共识，半局部约束，解决同样的纹理，比如墙面特征相同而无法选取特征点的问题。4D卷积，平移不变性,强局部性，the network will determine the quality of a match by examining only the information in a local 2D neighbourhood in each of the two images.交换前后帧得到两个匹配结果，把不匹配的干掉，再卷积。没用argmax匹配，而是使用了soft nearest score. While this filtering step has no trainable parameters, it can be inserted in the CNN pipeline at both training and evaluation stages, and it will help to enforce the global reciprocity constraint on matches.
+>用softmax得到匹配程度，This probabilistic intuition allows us to model the match uncertainty using a probability distribution and will be also useful to motivate the loss used for weakly-supervised training.
 
 ### STFCN: spatio-temporal FCN for semantic video segmentation
 @article{fayyaz2016stfcn,
@@ -10,6 +11,9 @@
 }
 > FCN + LSTM 视频分割
 
+---
+### 这些懒得补充了
+---
 @inproceedings{jin2017video,
   title={Video scene parsing with predictive feature learning},
   author={Jin, Xiaojie and Li, Xin and Xiao, Huaxin and Shen, Xiaohui and Lin, Zhe and Yang, Jimei and Chen, Yunpeng and Dong, Jian and Liu, Luoqi and Jie, Zequn and others},
