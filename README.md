@@ -6,7 +6,7 @@
   volume={3},
   year={2017}
 }
-> 
+> 经典方法RANSAC，每次随机初始化几个点，用这一部分点拟合，然后查看有多少点符合拟合结果。最后选取最多点符合的一次。是一种通过局部匹配得到全局模型的办法，或者说局部预测，全局拟合。
 
 ### **NIPS2018**&nbsp;&nbsp; Neighbourhood Consensus Networks
 > 采用neighbourhood consensus or more broadly as semi-local constraints.邻域共识，半局部约束，解决同样的纹理，比如墙面特征相同而无法选取特征点的问题。4D卷积，平移不变性,强局部性，the network will determine the quality of a match by examining only the information in a local 2D neighbourhood in each of the two images.交换前后帧得到两个匹配结果，把不匹配的干掉，再卷积。没用argmax匹配，而是使用了soft nearest score. While this filtering step has no trainable parameters, it can be inserted in the CNN pipeline at both training and evaluation stages, and it will help to enforce the global reciprocity constraint on matches.
