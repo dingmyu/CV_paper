@@ -9,3 +9,6 @@
 
 ### VLocNet++: Deep Multitask Learning for Semantic Visual Localization and Odometry 
 >加入语义分割同时训练,结果提升很多,这种加语义的paper去年有好多,因为语义特征更为稳定
+
+### leveraging deep visual descriptors for hierarchical efficient localization
+> 实现了相对pose的一个pipeline,看起来更像一个工程论文. pose聚类+pnp ransac,使用了netvlad层,用的sift特征.
