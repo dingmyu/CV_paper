@@ -12,3 +12,6 @@
 
 ### leveraging deep visual descriptors for hierarchical efficient localization
 > 实现了相对pose的一个pipeline,看起来更像一个工程论文. pose聚类+pnp ransac,使用了netvlad层,用的sift特征.
+
+### from coarse to fine: robust hierarchial localization at large scale
+>　和上一篇差不多，2d-3d的匹配，加入了distillation学习更小的网络，参考文献可以参考，有几篇学习low-level特征的，比sift特征更好。（superpoint）
