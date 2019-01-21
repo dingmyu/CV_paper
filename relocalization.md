@@ -1,3 +1,13 @@
+### DSAC - Differentiable RANSAC for Camera Localization
+@inproceedings{brachmann2017dsac,
+  title={DSAC-differentiable RANSAC for camera localization},
+  author={Brachmann, Eric and Krull, Alexander and Nowozin, Sebastian and Shotton, Jamie and Michel, Frank and Gumhold, Stefan and Rother, Carsten},
+  booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  volume={3},
+  year={2017}
+}
+> 经典方法RANSAC，每次随机初始化几个点，用这一部分点拟合，然后查看有多少点符合拟合结果。最后选取最多点符合的一次。是一种通过局部匹配得到全局模型的办法，或者说局部预测，全局拟合。不可微的原因是argmax，修改成可微有两种方案，第一种是softmax，第二种是基于概率的选择。作者后来发现基于概率的选择效果比较好。
+
 ### Camera Relocalization by Computing Pairwise Relative Poses Using Convolutional Neural Network 
 > NNnet,Siamese网络直接计算相对pose
 
