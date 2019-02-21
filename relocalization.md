@@ -17,11 +17,20 @@
 ### exploiting points and lines in regression forests for RGB-D camera relocalization
 > 使用回归森林模型，使用lsd提取了线段进行学习，并随机sample点,然后用ransac求定位.做了一个点应该在线段内的约束.
 
+### are large-scale 3d models really necessary for accurate visual localization?
+> 比较久的文章,但是刚中.讲不需要复杂的3d模型,做了个数据集,用vlad特征,spatial reranking和局部sfm的方法,达到了和3d模型近似的精度.
+
+### netvlad
+> vlad的深度版本
+
+### posenet
+> 开山之作
+
 ### Camera Relocalization by Computing Pairwise Relative Poses Using Convolutional Neural Network 
 > NNnet,Siamese网络直接计算相对pose
 
 ### RelocNet: Continuous Metric Learning Relocalisation using Neural Nets 
-> 这篇是加入了视角重合的比例作为一个额外的约束,camera pose retrieval更准.
+> 这篇是加入了视角重合的比例作为一个额外的约束,camera pose retrieval更准.(NNnet基础上)
 
 ### Deep Auxiliary Learning for Visual Localization and Odometry 
 > 这篇同时学习了相对和绝对pose,学习绝对pose的同时也保证其满足相对pose的约束关系,结果比前面两个高的多.
