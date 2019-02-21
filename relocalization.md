@@ -98,3 +98,6 @@
 
 ### full-frame scene coordinate regression for image-based localization
 > FCN回归场景坐标,然后ransac计算pose.通过微调pose反投影做了数据增强,被less more吊打了.
+
+### learning to find good correspondences
+> 使用sift提取n个特征点对,然后网络输入n\*4进行回归其权重,最后使用八点法进行定位,可微的loss.训练完又用了ransac
