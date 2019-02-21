@@ -93,3 +93,7 @@
 ### on-the-fly adaptation of regression forests for online camera relocalization
 >  回归森林模型,2d-3d匹配,改成了online的版本,可以在一个场景finetune,另一个场景finetune
 
+### scene coordinate and correspondence learning for image-based localization
+> 用神经网络回归3d场景坐标,加了个平滑项.然后通过学习特征点为场景坐标预测权重,最后使用ransac.
+
+
