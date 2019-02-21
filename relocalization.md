@@ -96,4 +96,5 @@
 ### scene coordinate and correspondence learning for image-based localization
 > 用神经网络回归3d场景坐标,加了个平滑项.然后通过学习特征点为场景坐标预测权重,最后使用ransac.
 
-
+### full-frame scene coordinate regression for image-based localization
+> FCN回归场景坐标,然后ransac计算pose.通过微调pose反投影做了数据增强,被less more吊打了.
