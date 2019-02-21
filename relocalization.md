@@ -86,3 +86,7 @@
 
 ### 2018eccv  CPlaNet: Enhancing Image Geolocalization by Combinatorial Partitioning of Maps
 > 也不是自动驾驶场景的定位，是在google地图上的那种定位，误差有几KM。思想是把地图分成不同组super pixel，每一块用于分类。结合多次分类的结果选取最可能的位置。
+
+### on-the-fly adaptation of regression forests for online camera relocalization
+>  回归森林模型,2d-3d匹配,改成了online的版本,可以在一个场景finetune,另一个场景finetune
+
