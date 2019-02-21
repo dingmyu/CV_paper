@@ -66,6 +66,9 @@
 ### Benchmarking 6DOF Outdoor Visual Localization in Changing Conditions
 > 白天黑夜 四季数据集  benchmark
 
+### random forests versus neural networks -- what's best for camera localization?
+> 将回归森林模型转化成了神经网络,并且进行端到端的训练,最后做了一个平均
+
 ### Semantic Match Consistency for Long-Term Visual Localization
 > 用语义信息解决季节变化问题。建了一个3d语义地图，query的时候去匹配并计算语义的匹配程度。把这个匹配程度作为ransac的权重。
 
