@@ -11,6 +11,12 @@
 ### 2018cvpr  Learning Less is More – 6D Camera Localization via 3D Surface Regression
 > 直接回归学习一个2d-3d的correspondence，把DSAC的网络改成了fcn，把DSAC里学习correspondence和打分的过程放到一个网络里联合学习。精度很高，室外20cm.
 
+### geometry-aware learning of maps for camera localization
+> mapnet,李代数学习角度,同时相对和绝对pose,  mapnet+ 加入了unlabeled data, mapnet++ 加入了pgo
+
+### exploiting points and lines in regression forests for RGB-D camera relocalization
+> 使用回归森林模型，使用lsd提取了线段进行学习，并随机sample点,然后用ransac求定位.做了一个点应该在线段内的约束.
+
 ### Camera Relocalization by Computing Pairwise Relative Poses Using Convolutional Neural Network 
 > NNnet,Siamese网络直接计算相对pose
 
