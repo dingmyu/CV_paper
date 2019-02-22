@@ -61,7 +61,7 @@
 
 
 ### inLoc: Indoor Visual Localization with Dense Matching and View Synthesis
-> dense feature extraction and matching.用cnn提pixel-level的特征，先用高级语义特征作粗略匹配，再用低级纹理特征精确匹配。
+> dense feature extraction and matching.用cnn提pixel-level的特征，先用高级语义特征作粗略匹配，再用低级纹理特征精确匹配,做了一个dense的matching.总体流程 netvlad提特征选取top10,然后dense匹配,ransac计算pose,然后做了一个合成视图用来验证pose准确性,最后根据这十个估计一个pose.需要用到depth,提出了一个inloc数据集.
 
 ### Benchmarking 6DOF Outdoor Visual Localization in Changing Conditions
 > 白天黑夜 四季数据集  benchmark
@@ -103,4 +103,4 @@
 > 使用sift提取n个特征点对,然后网络输入n\*4进行回归其权重,最后使用八点法进行定位,可微的loss.训练完又用了ransac
 
 ### efficient condition-based representations for long-term visual localization
-> 解决robotcar-seasons不同环境场景的问题,用了多个encoder,根据不同场景选取不同的encoder,用了generalized mean pooling. 感觉比较水.
+> 解决robotcar-seasons不同环境场景的问题,用了多个encoder,根据不同场景选取不同的encoder,用了generalized mean pooling. retrive但并没有计算相对pose,感觉比较水.
