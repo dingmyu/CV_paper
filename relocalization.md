@@ -101,3 +101,6 @@
 
 ### learning to find good correspondences
 > 使用sift提取n个特征点对,然后网络输入n\*4进行回归其权重,最后使用八点法进行定位,可微的loss.训练完又用了ransac
+
+### efficient condition-based representations for long-term visual localization
+> 解决robotcar-seasons不同环境场景的问题,用了多个encoder,根据不同场景选取不同的encoder,用了generalized mean pooling. 感觉比较水.
