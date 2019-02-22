@@ -59,7 +59,6 @@
 ### Semantic Visual Localization
 > 使用语义地图，可以减少由于环境气候光线变化导致的定位不准的问题。用了一个3d网络对语义地图进行补充。3d-3dmatching
 
-
 ### inLoc: Indoor Visual Localization with Dense Matching and View Synthesis
 > dense feature extraction and matching.用cnn提pixel-level的特征，先用高级语义特征作粗略匹配，再用低级纹理特征精确匹配,做了一个dense的matching.总体流程 netvlad提特征选取top10,然后dense匹配,ransac计算pose,然后做了一个合成视图用来验证pose准确性,最后根据这十个估计一个pose.需要用到depth,提出了一个inloc数据集.
 
@@ -104,3 +103,6 @@
 
 ### efficient condition-based representations for long-term visual localization
 > 解决robotcar-seasons不同环境场景的问题,用了多个encoder,根据不同场景选取不同的encoder,用了generalized mean pooling. retrive但并没有计算相对pose,感觉比较水.
+
+### Learning to Navigate the Energy Landscape Julien
+> The proposed method is essentially a discrete optimization technique that uses a hierarchical navigation graph and a retrieval forest. 有点理论,主要是树相关的方法,没看懂
