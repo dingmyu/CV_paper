@@ -112,3 +112,6 @@
 
 ### Learning to Navigate the Energy Landscape Julien
 > The proposed method is essentially a discrete optimization technique that uses a hierarchical navigation graph and a retrieval forest. 有点理论,主要是树相关的方法,没看懂
+
+### uncertainty-driven 6d pose estimation of objects and scenes from a single rgb image
+> rgbpose.实际上是一篇只用rgb做object pose的文章,但也可以做localization.是先估算了一个大概的3d位置概率模型,然后使用ransac进行优化的方法.但是训练的时候也用到了depth,只是test的时候纯rgb.
