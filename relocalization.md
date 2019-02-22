@@ -89,8 +89,11 @@
 ### 2018eccv  CPlaNet: Enhancing Image Geolocalization by Combinatorial Partitioning of Maps
 > 也不是自动驾驶场景的定位，是在google地图上的那种定位，误差有几KM。思想是把地图分成不同组super pixel，每一块用于分类。结合多次分类的结果选取最可能的位置。
 
-### on-the-fly adaptation of regression forests for online camera relocalization
->  回归森林模型,2d-3d匹配,改成了online的版本,可以在一个场景finetune,另一个场景finetune
+### on-the-fly adaptation of regression forests for online camera relocalisation
+> 回归森林模型,2d-3d匹配,改成了online的版本,可以在一个场景finetune,另一个场景finetune
+
+### real-time rgb-d camera pose estimation in novel scenes using a relocalisation cascade
+> 上一篇回归森林模型的扩展,将最后ransac出的一个固定的pose改为概率输出,选择一个分最高的.提出了级联的结构,第一级精度差速度快,之后精度高速度慢,不同阶段做不同的取舍.
 
 ### scene coordinate and correspondence learning for image-based localization
 > 用神经网络回归3d场景坐标,加了个平滑项.然后通过学习特征点为场景坐标预测权重,最后使用ransac.
