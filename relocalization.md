@@ -11,6 +11,9 @@
 ### 2018cvpr  Learning Less is More – 6D Camera Localization via 3D Surface Regression
 > 直接回归学习一个2d-3d的correspondence，把DSAC的网络改成了fcn，把DSAC里学习correspondence和打分的过程放到一个网络里联合学习。精度很高，室外20cm.
 
+### scene coordinate regression with angle-based reprojection loss for camera relocalization
+> 解决了less-more(dasc++)为了丢掉3dmodel而需要进行一个depth的大概初始化的问题.将重投影误差改成了角度误差,同时引入了multi-view的损失,也尝试了学光流用的photometric loss,L1范数+0.85SSIM.使用新的loss对初始化不敏感,在没有3dmodel的情况下结果更好.
+
 ### geometry-aware learning of maps for camera localization
 > mapnet,李代数学习角度,同时相对和绝对pose,  mapnet+ 加入了unlabeled data, mapnet++ 加入了pgo
 
