@@ -10,5 +10,5 @@
 >实际上是学了一个h\*w\*h\*w的一个关联,通过4D卷积学习相关性,然后通过一个filter,除以最大的概率来得到一个soft的概率.如果卡阈值求argmax的话可以得到最合适的匹配点.利用半监督的pair loss来学习. 如果用作localization的话,文中是对于像素值做了特殊处理.
 
 ### **NIPS2016**&nbsp;&nbsp; Universal Correspondence Network
-> 弱监督，通过图像间的匹配关系，利用metric learning和全卷积网络，学习了一个dense的特征提取。利用了conv spatial transformer层。
+> 强监督，通过图像间的点匹配关系，利用metric learning和全卷积网络，学习了一个dense的特征提取,loss就是匹配的更近,不匹配的希望大于一个阈值,对于不匹配的点对用了hard negative mining,比较耗时。利用了conv spatial transformer层。
 
