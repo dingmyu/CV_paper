@@ -12,3 +12,5 @@
 ### **NIPS2016**&nbsp;&nbsp; Universal Correspondence Network
 > 强监督，通过图像间的点匹配关系，利用metric learning和全卷积网络，学习了一个dense的特征提取,loss就是匹配的更近,不匹配的希望大于一个阈值,对于不匹配的点对用了hard negative mining,比较耗时。利用了conv spatial transformer层。
 
+### spatial transformer networks
+> 用在输入图片之后或者网络之中,显式的model图片或者featuremap的平移旋转和crop,基本思路是通过conv/fc层学习一个映射矩阵,然后把这个矩阵作用在原图上,并配合可微的双线性插值,来将图像或者featuremap进行一个变换,变换后的feature再用于分类效果就会比较好.
