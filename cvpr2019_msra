@@ -1,0 +1,116 @@
+RE-ID
+
+VPM  preceive where to focus: learning vislibility-aware part features for partial person re-identification
+标注数据，将人的不同部位区分开，根据是否遮挡学习一个权重出来。最后有三个loss，有分类的还有基于metric的。
+
+
+
+Tracking
+
+SiamDW: Deeper and wider siamese networks for real-time visual tracking
+单目标跟踪，基于siamese网络，经典工作 SiamFC/sliding window和SiamRPN/region proposal）。为什么之前都是alexnet，直接替换backbone到resnet会掉点。padding会引起similarity score算不准，不能一个有padding一个没有padding。 stride要更小4/8，感受野要根据图片大小来设置。根据这些东西自己设计了一个小网络，性能提升。
+
+Visual tracking via adaptive spatially-regularized correlation filters
+结合了相关滤波/傅里叶变换和深度学习。经典算法KCF/SRDCF等。框内有背景的话会导致相关滤波学的比较差，深度特征比相关率滤波慢得多。在传统的相关滤波上加了一个自适应空间正则，是学习完了直接乘上去的，相当于是滤波器权重自适应学习。用ADMM算法求解/增广拉格朗日形式。
+
+
+
+
+Pose estimation
+
+Deep high-resolution representation learning for human pose estimation
+Top-down, high->low->high resolution. 经典方法有：hourglass/cpn/simplebaseline/dilation。提出了HRnets，multi-scale fusion，感觉像是同时有三个分支，不同的三个分辨率，三个分辨率同时学习的时候有彼此的信息交互。
+
+
+
+
+Learning and recognition
+
+Self-Supervised convolutional subspace clustering network.
+高维子空间聚类问题。经典方法基于谱聚类DSCNET，两个步骤，第一步是构造一个相似度矩阵data affinity matrix，第二步是应用谱聚类算法。L1和L2范数正则化，L1对很多数据点来说作用不是稀疏化，子空间保持性，L2也是？这篇把深度网络/自表达模块/谱聚类模块放在一块端到端训练了。
+
+A decomposition algorithm for the sparse generalized eigenvalue problem
+全是数学公式，没听懂。
+
+
+label efficient semi-supervised learning via graph filtering
+数据少：few-shot/meta-learning/semi-supervised。graph-based半监督学习，有大量的无监督数据。
+经典方法：LP/ICA/SemiEmb。图卷积神经网络之后：GCN/GraphSAGE/GAT。
+label propagation实际上就是一个卷积滤波。本文结合了feature和graph。如果GCN的relu换一下位置，就是一个GSP。improveGCN，在filter上加了一个K代表k阶卷积，调整平滑度，根据数据多少来调整k，数据少希望多平滑，保证同类近，数据多希望少平滑，保证有区分度。
+
+
+
+Learning to learn image classifiers with visual analogy
+学习一个图中的embedding，然后学习线性映射，从而达到使用很少数据学习新类别的作用。就和Low-shot learning很像。 learning-to-learning推出来的parameter。。。
+
+
+现在的结果不够漂亮，也只能投CV了。。。。
+熬过寒冬，冻死那些不穿羽绒服的。
+
+
+Distillation
+
+Snapshot distillation: Teacher-Student Optimization in one generation.
+经典方法 BAN ICML2018
+hinton说这里有一个dark knowledge，把one-hot变成了概率，可以得到更加丰富的信息，这就是解释为什么有用，把它叫做了secondary information。刻意去压低top1的probability，教的student会更加好。但是一轮一轮教学生再ensemble太慢了，要好几倍的时间。怎么加速呢，只用snapshot就可以。。。使用了snapshot ensemble，cos学习率。看起来不太可靠呢...
+这种语义相关的信息比label smoothing要有用的多。
+
+Progressive Teacher-Student Learning for Early Action Prediction
+teacher:完整视频 双向LSTM，行为识别， student:不完整视频，单向LSTM，行为预测。 所以是一个、跨任务的信息蒸馏。局部和整体两种loss
+
+
+3D Reconstructuion
+
+Single-image piece-wise planar 3d reconstruction via associative embedding
+点线面这种structure很重要。 structure learning，平面重建。去年cvpr，planenet，变成segmentation和平面参数估计的任务。
+本文主要贡献，embedding再聚类，使用meanshift，instance-aware pooling，对上一步估计出来的每一个plane估计一个parameter。
+PPGnet： line detection
+
+
+Detection
+
+Mask scoring R-CNN
+mask rcnn基础上加一个trick，没有一条公式，代码开源。添加了mask score来替代原来的rcnn score，insight就是说bbox的准确和分割的准确不是同一回事。相当于是对mask进行了一个重排序？和IOUnet是类似的思想？
+
+
+Quantization
+
+seerNet: predicting concolution neural network feature-map sparsity through low-bit quantization
+featuremap稀疏，只有90%以上的稀疏才能加速，如果只有50的话是不好做的话。accuracy和sparsity不能两全，准确是要求稀疏的。计算上的规则性又是保证计算效率的关键，所以有一点矛盾。
+relu->负数变0，max pooling->太小的丢掉。relu只需要知道正负，maxpooling只需要知道相对大小。用低比特预测出了正负和先对大小，再做全精度的计算。不需要retraining和finetuning。加速比1.5-5.79。
+
+
+multi-label recognition
+
+multi-label image recognition with graph convolutional networks
+全用二分类的话输出空间太大，考虑使用gcn把关联的提高，不可能出现的压下去，relation。voc2007，coco，nus-wide，ml-images。
+GCN学到的是node到classifier的一个映射，直接作用在图像表征上，然后接multi-label的loss，整体比较简单，就是gcn学了个weight然后乘上去？correlation。没有关系矩阵怎么建造呢，成为了一个核心的子问题。基于条件概率来构建了graph，通过扫描数据集中的图像，共同出现的频次当作条件概率。但是只基于这个还不行，有很多很小的，所以设置了threshold过滤了一下。会over smoothing，比如所有节点信息都传到了person这一个节点，person本身就没法很好分类了，所以加入了re-weight模块，reweight很有用，能很好处理建图带来的oversmoothing问题。可视化结果 retrieval也更准了，t-sne结果也是更好了。
+
+
+multi-view learning(多模态？)
+
+autoencoder in autoencoder
+1.完备性，不同模态数据的一致性和差异性。2.鲁棒性，嵌套的autoencoder 3.端到端。 所以是无监督学习？
+
+On exploring undetermined relationships for visual relationship detection
+传统 object detection  然后relation的预测。本文加了一个predicate detection，预测检测有没有用，引入了不确定性关系。多模态特征
+
+
+
+filter, no deep learning
+
+side window filtering
+均值滤波，3*3局部窗口 迭代十次变模糊。做了一点小改进，小斑点去掉了，保边效果保留了。当我要估计一个像素的时候，我们要找一个同质的区域，而不是简单的方框。比如step edge这种情况，边界就很难保持住了。把滤波器的窗改成了长方形，一个边在点上，绕着转，但是这样窗口包住的像素是不固定的。离散再离散，最后只选了八个窗口，上下左右和四个角。  双边滤波器能做图像增强，高斯中值等等用来模糊和去噪。
+
+
+
+bring a blurry frame alive at high frame rate with an event camera
+blur和图像是一个二次积分的关系，但是只有一个参数c，就是事件相机的阈值。寻找c使得重建出来的图像的边缘correlation尽量好。虽然是非凸，但是看上去还是接近凸的。 这个组做了很多雷达，光流，几何等方面的工作。
+
+
+viewport proposal cnn for 360 video quality assessment
+全景视频质量评估，也叫vqa。。。评估了才知道怎么提升。借鉴faster-rcnn。第一步是预测可能的viewpoint（proposal），然后显著性检测，质量评估。人眼看，打分，网络是让客观分值逼近人的主观分值。
+
+
+dyntypo: example-based dynamic text effects transfer
+艺术字风格迁移，还是基于patch的优化方法，不是深度学习。语义一致，纹理一致，加入时域变成时空纹理一致性。使用了一个通用的NNF（最近邻场）。定义关键帧，变化最显著的。patchmatch+最近邻场，patch加了权重，使用模拟退火算法，让核心区域尽快迁移，然后传递到其他位置。
