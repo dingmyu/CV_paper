@@ -1,0 +1,12 @@
+1.Ghostscript
+PostScipt 语言和pdf解释器,压缩pdf用
+
+安装
+sudo apt-get install ghostscript
+
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dBATCH -dQUIET -sOutputFile=output.pdf input.pdf
+不同的压缩模式 
+-dPDFSETTINGS=/screen,压缩比最大，输出文件最小，质量最低
+-dPDFSETTINGS=/ebook,压缩比稍小，输出文件稍大，质量稍高
+-dPDFSETTINGS=/prepress,输出文件信息同Acrobat Distiller “Prepress Optimized”设置
+-dPDFSETTINGS=/default,缺省的，即大多数情况使用的压缩方式
