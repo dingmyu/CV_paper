@@ -10,3 +10,6 @@ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dB
 -dPDFSETTINGS=/ebook,压缩比稍小，输出文件稍大，质量稍高
 -dPDFSETTINGS=/prepress,输出文件信息同Acrobat Distiller “Prepress Optimized”设置
 -dPDFSETTINGS=/default,缺省的，即大多数情况使用的压缩方式
+
+2. pdftk 1.pdf 2.pdf 3.pdf cat output 123.pdf
+合并pdf用
