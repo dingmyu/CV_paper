@@ -16,4 +16,4 @@
 > 用在输入图片之后或者网络之中,显式的model图片或者featuremap的平移旋转和crop,基本思路是通过conv/fc层学习一个映射矩阵,然后把这个矩阵作用在原图上,并配合可微的双线性插值,来将图像或者featuremap进行一个变换,变换后的feature再用于分类效果就会比较好.
 
 ### learning correspondence from the cycle-consistency of time
-> 这篇文章很棒棒,开篇点明了correspondence的重要性.文章基于cycle的思想.在video中取一个patch,forward几帧再backward回来,让位置尽可能的相同.开始不好学,可能不能forward太多次,所以文章是forward少次和多次同时学,同时还允许跳着学,以用来解决遮挡问题.进行patch 匹配的时候下采样了8倍,不过貌似默认不同patch都是一样大了,这样可能会有问题.文章使用softmax后的affinity function进行计算相似度,使用l2范树约束学习.学到的特征很有用,可以用于关键点光流跟踪等任务,配合k-nn方法使用.
+> 这篇文章很棒棒,开篇点明了correspondence的重要性.文章基于cycle的思想.在video中取一个patch,forward几帧再backward回来,让位置尽可能的相同.开始不好学,可能不能forward太多次,所以文章是forward少次和多次同时学,同时还允许跳着学,以用来解决遮挡问题.进行patch 匹配的时候下采样了8倍,不过貌似默认不同patch都是一样大了,这样可能会有问题.文章使用softmax后的affinity function (数量积dot product,对于笛卡尔向量其实就是(Frobenius) Inner Product) 进行计算相似度,使用l2范树约束学习.学到的特征很有用,可以用于关键点光流跟踪等任务,配合k-nn方法使用.
