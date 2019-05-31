@@ -17,3 +17,6 @@
 
 ### learning correspondence from the cycle-consistency of time
 > 这篇文章很棒棒,开篇点明了correspondence的重要性.文章基于cycle的思想.在video中取一个patch,forward几帧再backward回来,让位置尽可能的相同.开始不好学,可能不能forward太多次,所以文章是forward少次和多次同时学,同时还允许跳着学,以用来解决遮挡问题.进行patch 匹配的时候下采样了8倍,不过貌似默认不同patch都是一样大了,这样可能会有问题.文章使用softmax后的affinity function (数量积dot product,对于笛卡尔向量其实就是(Frobenius) Inner Product) 进行计算相似度,使用l2范树约束学习.学到的特征很有用,可以用于关键点光流跟踪等任务,配合k-nn方法使用.
+
+### Learning Dense Correspondence via 3D-guided Cycle Consistency
+> 这篇文章学习两个图片(比如两辆车)的语义相关性.借助CADmodel,将两张互相转,两张图片转到各自的cad,这三个结果通过两个cad模型得到的gt来进行学习.所以是4-cycle.文章使用Siamese网络,合并feature加了两个分支分别学习光流场,和可见区域(object区域).损失函数应该是用的l2范数.
