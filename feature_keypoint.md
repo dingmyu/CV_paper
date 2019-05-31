@@ -20,3 +20,6 @@
 
 ### Learning Dense Correspondence via 3D-guided Cycle Consistency
 > 这篇文章学习两个图片(比如两辆车)的语义相关性.借助CADmodel,将两张互相转,两张图片转到各自的cad,这三个结果通过两个cad模型得到的gt来进行学习.所以是4-cycle.文章使用Siamese网络,合并feature加了两个分支分别学习光流场,和可见区域(object区域).损失函数应该是用的l2范数.
+
+### end-to-end weakly-supervised semantic alignment
+> 这篇文章和dsac和less more很像.只不过没做定位,做的是特征语义匹配.文章先是用网络提取了特征,然后学了个hw\*hw的相似度矩阵.根据相似度得分学了一个transformation函数,类似光流场把两张图片warp到一起的(作者采用了spatial transformer来实现),并得到了每个像素的matching score.作者后面借鉴了ransac的思想,因为其不可导,所以卡阈值计算一个mask,将mask内的score加和作为ransac的inlier counts.这样就可导了,并且可以反传.端到端学习特征和align函数.
