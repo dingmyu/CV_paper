@@ -23,3 +23,6 @@
 
 ### end-to-end weakly-supervised semantic alignment
 > 这篇文章和dsac和less more很像.只不过没做定位,做的是特征语义匹配.文章先是用网络提取了特征,然后学了个hw\*hw的相似度矩阵.根据相似度得分学了一个transformation函数,类似光流场把两张图片warp到一起的(作者采用了spatial transformer来实现),并得到了每个像素的matching score.作者后面借鉴了ransac的思想,因为其不可导,所以卡阈值计算一个mask,将mask内的score加和作为ransac的inlier counts.这样就可导了,并且可以反传.端到端学习特征和align函数.
+
+### temporal cycle-consistency learning
+> 这篇文章也是基于cycle的思想,对于两个视频做对齐,alignment,从一个视频帧到另一个视频里找一个最近邻,再反向找回来,希望他们是同一帧,缩小这个距离.文章使用了soft nearest neighbor,就是softmax概率这样就可导了.然后算loss的时候用了正态分布做了个norm.文章学习的loss应该是Lcbr,但是也提到了一个Lcbc,看起来像是有监督的,我觉得没有用...不知道这里是啥意思.
