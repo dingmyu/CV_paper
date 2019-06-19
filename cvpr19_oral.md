@@ -56,7 +56,7 @@
 > release数据集，RGB和CAD model对于标注3D关键点.整体识别流程是寻找关键点，然后把某3dmodel关键点那一块丢进网络，会学到一个heat map出来，根据这个东西做align，最后基于ransac的方式得到9 dof的pose。
 
 # Towards Scene Understanding: Unsupervised Monocular Depth Estimation With Semantic-Aware Representation
-> 使用语义分割帮助优化单目depth，搞了一个左右眼的consistency，另外也可以帮助平滑
+> 使用语义分割帮助优化单目depth，搞了一个左右眼的consistency，另外也可以帮助平滑。语义分割和depth网络共享一个主干网络，在一个位置concat不同的task identity会有不同的结果，这样就可以使用非pair的数据。
 
 # Tell Me Where I Am: Object-Level Scene Context Prediction
 > 使用部分的semantic segmentation map来生成完整的layout，比如给一个人，那么学习一个shape和一个bbox的proposal，可以是一个天空，把这个贴到bbox的部位就可以了，监督信息就是完整的segmentation map
