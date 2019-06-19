@@ -60,3 +60,12 @@
 
 # Tell Me Where I Am: Object-Level Scene Context Prediction
 > 使用部分的semantic segmentation map来生成完整的layout，比如给一个人，那么学习一个shape和一个bbox的proposal，可以是一个天空，把这个贴到bbox的部位就可以了，监督信息就是完整的segmentation map
+
+# Normalized Object Coordinate Space for Category-Level 6D Object Pose and Size Estimation
+> 搞了一个NOCSmap，使用颜色来表示？没太看懂
+
+# Supervised Fitting of Geometric Primitives to 3D Point Clouds
+> 3D物体重建，每一个物体分解成了好多个类型的面，把它们融合起来学习，没太看懂。
+
+# Do Better ImageNet Models Transfer Better?
+> 做了好多好多实验，探究不同网络不同task，用不用imagenet预训练模型的效果差异。
