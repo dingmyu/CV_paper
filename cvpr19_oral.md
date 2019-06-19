@@ -5,10 +5,19 @@
 > 是用BA来做SLAM的一种方案。
 
 ### Revealing Scenes by Inverting Structure From Motion Reconstructions
-> 稀疏点云 + RGB 重建真实场景，可以渲染出真实的frame
+> 稀疏点云 + RGB 重建真实场景，可以渲染出真实的frame 
 
 ### Strand-Accurate Multi-View Hair Capture
 > micro-scale, 3D hair重建, 使用了一种新型的line-based的multi-view stereo
+
+### DeepSDF: Learning Continuous Signed Distance Functions for Shape Representation
+> 回归SDF，相比点云，可以得到continuous surface。用autoencoder学到了一个shape隐空间，用稀疏点来还原shape
+
+### Pushing the Boundaries of View Extrapolation With Multiplane Images
+> 多真渲染一个连续场景，用了MPI Fourier transformation。
+
+### GA-Net: Guided Aggregation Net for End-To-End Stereo Matching
+> Matching cost aggregation.把SGM变成了SGA layer，可微并且把min变成了max
 
 
 
