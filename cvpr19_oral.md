@@ -48,4 +48,9 @@
 
 # Learning Spatial Common Sense With Geometry-Aware Recurrent Networks
 > 使用GRNN进行3D重建，这里说的主要就是传统的RNN连接的多个frame位置对不上，因此先基于geometry把2D都投影到3D空间，然后再连RNN就可以了
-> 使用GRNN进行3D重建，这里说的主要就是传统的RNN连接的多个frame位置对不上，因此先基于geometry把2D都投影到3D空间，
+
+# Structured Knowledge Distillation for Semantic Segmentation
+> 蒸馏网络，搞了pair-wise和pixel-wise的loss，认为需要蒸馏每个像素的概率。
+
+# Scan2CAD: Learning CAD Model Alignment in RGB-D Scans
+> release数据集，RGB和CAD model对于标注3D关键点
