@@ -53,4 +53,7 @@
 > 蒸馏网络，搞了pair-wise和pixel-wise的loss，认为需要蒸馏每个像素的概率。
 
 # Scan2CAD: Learning CAD Model Alignment in RGB-D Scans
-> release数据集，RGB和CAD model对于标注3D关键点
+> release数据集，RGB和CAD model对于标注3D关键点.整体识别流程是寻找关键点，然后把某3dmodel关键点那一块丢进网络，会学到一个heat map出来，根据这个东西做align，最后基于ransac的方式得到9 dof的pose。
+
+# Towards Scene Understanding: Unsupervised Monocular Depth Estimation With Semantic-Aware Representation
+> 使用语义分割帮助优化单目depth，搞了一个左右眼的consistency，另外也可以帮助平滑
