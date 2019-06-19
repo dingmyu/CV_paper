@@ -114,3 +114,13 @@ viewport proposal cnn for 360 video quality assessment
 
 dyntypo: example-based dynamic text effects transfer
 艺术字风格迁移，还是基于patch的优化方法，不是深度学习。语义一致，纹理一致，加入时域变成时空纹理一致性。使用了一个通用的NNF（最近邻场）。定义关键帧，变化最显著的。patchmatch+最近邻场，patch加了权重，使用模拟退火算法，让核心区域尽快迁移，然后传递到其他位置。
+
+
+
+旷世主要讲了deformable，和一些检测的框架，最后是automl
+
+1. Spatial transformer networks 用了bilinear 和 sampler
+2. Deformable convolution 卷积核采样点发生改变，学习一个偏移，local dense的。deformable roipooling 也可以可视化 part offset。v2是用rcnn drive
+3. 一步和二步的检测，二步分类回归  retinadet。cornernet。centernet。FCOS。Foveabox。fpn对anchor-free有帮助。
+4. shufflenet，group conv，shufflenet v2，depth-wise
+5. single path oneshot nas。detnas    automl.org
