@@ -59,7 +59,7 @@
 > 使用语义分割帮助优化单目depth，搞了一个左右眼的consistency，另外也可以帮助平滑。语义分割和depth网络共享一个主干网络，在一个位置concat不同的task identity会有不同的结果，这样就可以使用非pair的数据。
 
 # Tell Me Where I Am: Object-Level Scene Context Prediction
-> 使用部分的semantic segmentation map来生成完整的layout，比如给一个人，那么学习一个shape和一个bbox的proposal，可以是一个天空，把这个贴到bbox的部位就可以了，监督信息就是完整的segmentation map
+> 使用部分的semantic segmentation map来生成完整的layout，比如给一个人，那么学习一个shape和一个bbox的proposal，可以是一个天空，把这个贴到bbox的部位就可以了，监督信息就是完整的segmentation map。搞了一堆gan loss
 
 # Normalized Object Coordinate Space for Category-Level 6D Object Pose and Size Estimation
 > 搞了一个NOCSmap，使用颜色来表示？没太看懂
