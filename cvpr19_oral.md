@@ -170,34 +170,59 @@ Linear internal constraints...没看懂
 ## Segmentation & Grouping
 
 ### UPSNet: A Unified Panoptic Segmentation Network
+1. 搞了个panoptic head把两种分割结果融合起来，把分割的结果分成两部分，thing和stuff，thing的部分再和普通分割的分支融合一下，最后再把它们concat起来决策最后的输出。
 ###	JSIS3D: Joint Semantic-Instance Segmentation of 3D Point Clouds With Multi-Task Pointwise Networks and Multi-Value Conditional Random Fields
+2. 3d版本的semantic + instance semantic。使用了MV-CRF进行融合（multi-view），instance embedding是聚类出来的，Loss_pull, Loss_push, Loss_embedding, Loss_reg
 ### Instance Segmentation by Jointly Optimizing Spatial Embeddings and Clustering Bandwidth
+3. instance segmentation，joint学聚类和spatial。有个问题是loss由远距离的点决定，且不能直接优化iou，，本文学习了spatial embeddings。一个seed branch，一个instance branch，最后结果融合起来。
 ### DeepCO3: Deep Instance Co-Segmentation by Co-Peak Search and Co-Saliency Detection
+4. 放了四个dataset，co-peak search，affinity loss，学习discriminative features to separate semantic masks。
 ### Improving Semantic Segmentation via Video Propagation and Label Relaxation
+5. 用了video左右两边的图来帮助分割，用flownet2提取光流，自监督并且能处理遮挡问题。对于合成数据，boundary relaxation，结果更好了，通过video propagation。general的方法，提升比较大。
 ### Accel: A Corrective Fusion Network for Efficient Semantic Segmentation on Video
+6. deep feature flow，，wrapping is coarse，No translational changes，没法处理新目标光照等等。本文多了一个update branch，然后score fusion。
 ### Shape2Motion: Joint Analysis of Motion Parts and Attributes From 3D Shapes
+7. 把3dshape分解成好多部件，每个部件能按照一个轴旋转。做了一个part的分割并且预测每个part的轴，release了一个dataset。
 ### Semantic Correlation Promoted Shape-Variant Context for Segmentation
+8. 分成了spatial dependant和semantic dependant。使用了paired convolution，会学到correlation信息。用paired conv学到一个shape信息，然后把这个东西当作relation一样的东西。
 ### Relation-Shape Convolutional Neural Network for Point Cloud Analysis
+9. relation-shape conv，把CNN的weight改成了一个mapping function，共享一个MLP，建立一个层次的relation CNN，用于点云数据。
 ### Enhancing Diversity of Defocus Blur Detectors via Cross-Ensemble Network
+10. 这老哥这口语，跟东北话似的。是一个有两路branch的network，一路一路的train，最后finetune一下。
 ### BubbleNets: Learning to Select the Guidance Frame in Video Object Segmentation by Deep Sorting Frames
+11. 对于视频目标分割，本文选最适合标注的一帧。预测每一帧的损失，使用相对两帧构建了一个损失，如果损失在某个阈值，把排序的pair进行交换，所以像冒泡排序一样，选出最重要的一帧。
 ### Collaborative Global-Local Networks for Memory-Efficient Segmentation of Ultra-High Resolution Images
+12. deep featuremap shareing。速度快准确率高。提出了一个two-stage分割，先down-sample，global分割再精确local分割（只在一小部分bbox里分割），解决前景比背景小很多的问题。
 ### Efficient Parameter-Free Clustering Using First Neighbor Relations
+13. 聚类算法，比k-means效果好速度快。提出了一个邻接矩阵的计算方式。
 ### Learning Personalized Modular Network Guided by Structured Knowledge
+14. 包含action space，recurrent policy network和graph search。最后做的也是分割，加了knowledge graph貌似。没听懂。
 ### A Generative Appearance Model for End-To-End Video Object Segmentation
+15. 做的是vos，说offline不好，online finetune又太慢，这篇文章说k近邻不可微，match的方法没有区分性。这篇文章搞了一个appearance learning，看起来挺有意思的，没仔细听，回去可以看下。
 
 ## Deep Learning
 
 ### Practical Full Resolution Learned Lossless Image Compression
+1. 图像压缩。pixelcnn可以进行压缩，但是得一个像素一个像素来，特别慢。本文使用了类似Unet的一种结构，提速了一千多倍，
 ### Image-To-Image Translation via Group-Wise Deep Whitening-And-Coloring Transformation
+2. group-wise deep whitening and coloring transform. 进行了style-transform，然后进行了分类的实验。
 ### Max-Sliced Wasserstein Distance and Its Use for GANs
+3. Wasserstein距离在高维空间中使用分类器进行辨别。本文提出max sliced Wasserstein距离，使用最好的投影方向。
 ### Meta-Learning With Differentiable Convex Optimization
+4. 本文在prototypical方法中加入了SVM，因为SVM可以同时利用正负样本，few-shot learning。
 ### RePr: Improved Training of Convolutional Filters
+5. 网络训练的时候，每次剪枝把不重要的剪掉，重新初始化再训练可以有更好的结果。
 ### Tangent-Normal Adversarial Regularization for Semi-Supervised Learning
+6. 使用manifold regular。classifier需要在manifold上smooth，还要对outlier robust。本文使用了vae和gan做实验，搞了一些regularization。
 ### Auto-Encoding Scene Graphs for Image Captioning
+7. caption，motivation是有的词语表达不准确，进行一个替换。 后面没听到。
 ### Fast, Diverse and Accurate Image Captioning Guided by Part-Of-Speech
+8. caption，有好多表达都是正确的。使用beam search来达成low overlap，more diversity，也是准确的。
 ### Attention Branch Network: Learning of Attention Mechanism for Visual Explanation
+9. cam之后有个grad-cam，本文提出了attention branch network。用attention branch提取attention map，然后放到perception branch上。
 ### Cascaded Projection: End-To-End Network Compression and Acceleration
 ### DeepCaps: Going Deeper With Capsule Networks
+11. 使用更深的胶囊网络在cifar 10上。
 ### FBNet: Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search
 ### APDrawingGAN: Generating Artistic Portrait Drawings From Face Photos With Hierarchical GANs
 ### Constrained Generative Adversarial Networks for Interactive Image Generation
