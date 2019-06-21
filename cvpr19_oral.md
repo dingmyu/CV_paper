@@ -96,9 +96,9 @@ Linear internal constraints...没看懂
 ## 3D Single View & RGBD
 
 ### 3D-SIS: 3D Semantic Instance Segmentation of RGB-D Scans
-用多帧的RGBD数据来解3d instance segmentation问题，同时也可以求解3d detection问题。主要是使用了多帧的geometry和color约束。
+1. 用多帧的RGBD数据来解3d instance segmentation问题，同时也可以求解3d detection问题。主要是使用了多帧的geometry和color约束。
 ### Causes and Corrections for Bimodal Multi-Path Scanning With Structured Light
-没看懂，选一个点A为前景，B为背景，AB为边界。然后根据频率...multi-path来求解。
+2. 没看懂，选一个点A为前景，B为背景，AB为边界。然后根据频率...multi-path来求解。
 ### TextureNet: Consistent Local Parametrizations for Learning From High-Resolution Signals on Meshes
 3. 提出了4-Rosy Field （quadriflow）来表示3D空间，大概是用角度来表示每一个点？最后做了3D Segmentation。
 ### PlaneRCNN: 3D Plane Detection and Reconstruction From a Single Image
