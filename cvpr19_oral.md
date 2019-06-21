@@ -1,3 +1,5 @@
+##3D multi-view oral paper:
+
 ### SDRSAC: Semidefinite-Based Randomized Approach for Robust Point Cloud Registration Without Correspondences
 > 是对RANSAC的一种改进方法，每次多取一些samples进行选取inliners。
 
@@ -19,11 +21,23 @@
 ### GA-Net: Guided Aggregation Net for End-To-End Stereo Matching
 > Matching cost aggregation.把SGM变成了SGA layer，可微并且把min变成了max
 
+### Real-Time Self-Adaptive Deep Stereo
+code，refine，金字塔特征，backward只走一条路。
+
+### LAF-Net: Locally Adaptive Fusion Networks for Stereo Confidence Estimation
+Matching cost + Disparity + RGB -> confidence, 3 attention.
+
+### NM-Net: Mining Reliable Neighbors for Robust Feature Correspondences
+local information, Feature aggregation module
+
+### Coordinate-Free Carlsson-Weinshall Duality and Relative Multi-View Geometry
+Linear internal constraints...没看懂
+
+### Deep Reinforcement Learning of Volume-Guided Progressive View Inpainting for 3D point Scene Completion From a Single Depth Image
+3D scene completion. Depth inpainting, 强化学习决定projection角度，完成3D重建。
 
 
-
-
-
+##
 
 ### d-SNE: Domain Adaptation Using Stochastic Neighborhood Embedding
 >
