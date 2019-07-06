@@ -15,3 +15,7 @@ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dB
 合并pdf用
 
 3. conda create -n tf-gpu tensorflow-gpu python=3.6.8
+
+4. sudo apt install default-jre
+
+5. sudo apt install default-jdk
