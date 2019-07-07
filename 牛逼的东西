@@ -19,3 +19,18 @@ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dB
 4. sudo apt install default-jre
 
 5. sudo apt install default-jdk
+
+6. Google Cloud: image vs snapshot:
+    Snapshots:
+    Good for backup and disaster recovery
+    Lower cost than images
+    Smaller size than images since it doesn't contain OS, etc.
+    Differential backups - only the data changed since the last snapshot is recreated
+    Faster to create than images
+    Snapshots are only available in the project they are created
+    Can be created for running disks even while they are attached to running instances
+    
+    Images:
+    Good for reusing compute engine instance states with new instances
+    Available across different projects
+    Can't be created for running instances(unless you use --force flag)
