@@ -18,6 +18,12 @@
 ### MonoGRNet: A Geometric Reasoning Network for Monocular 3D Object Localization
 这篇文章不用额外data，单模型只用3d bbox作为监督。估了一个粗糙的depth，图片划分网格，每个网格一个depth，然后根据depth的大小关系处理了一下遮挡问题。模型输入单张rgb，使用浅层特征训练了delta location和corner的offset（个人觉得不是很make sense）。深层特征计算了instance depth和3d中心。深层特征输出大概的bbox位置后，浅层特征用来refine。
 
+### 3d bounding boxes for road vehicles: a one-stage, localization prioritized approach using single monocular images
+看起来像是一篇水文，全文的main contribution就是预测了一个关键点，这个关键点指的是车辆底部的中心。然后做了个投影回归的约束。
+
+### Orthographic feature transform for monocular 3d object detection
+
+
 ## lidar
 
 ### Fast and Furious: Real Time End-to-end 3d objection, tracking and motion forecasting with a single convolutional net
