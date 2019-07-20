@@ -27,6 +27,9 @@
 ### Mono3D++：
 这篇文章我觉得很solid的，首先related work写得很好，都可以用来参考。这篇文章是用pascal数据集构建了2d关键点，并且算了平均的3dshape，使用2d loss，2d 关键点，3d框和3dshape这些loss，通过重投影，利用了shape的先验信息。此外还学习了单目深度，貌似是通过一个patch来搞的，然后学了地平线的法线，论文的loss function看起来也合理，值得借鉴。
 
+### multi-level fusion based 3d object detection from monocular images
+武大的。这篇主要贡献应该是先学了个单目depth，然后把depth和rgb结合提取特征，通过depth还生成了电云，也直接pooling提取特征，然后和RGB的特征融合。
+
 ## lidar
 
 ### Fast and Furious: Real Time End-to-end 3d objection, tracking and motion forecasting with a single convolutional net
