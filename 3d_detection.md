@@ -30,6 +30,12 @@
 ### multi-level fusion based 3d object detection from monocular images
 武大的。这篇主要贡献应该是先学了个单目depth，然后把depth和rgb结合提取特征，通过depth还生成了电云，也直接pooling提取特征，然后和RGB的特征融合。
 
+### Pseudo-LiDAR from Visual Depth Estimation: Bridging the Gap in 3D Object Detection for Autonomous Driving
+
+
+### monocular 3d object detection with pseudo-lidar point cloud
+CMU的。这篇和pseudo lidar那篇有异曲同工之妙，和洪伟的paper也有点像。是提取了depth，然后根据depth生成pesudo lidar，然后根据instance segmentation从中抠出视锥来，根据视锥学习一个3d detection，这里用了二阶段，还学了一个残差，最后搞了一个2d-3d consistency，这篇文章一看流程图就懂了。
+
 ## lidar
 
 ### Fast and Furious: Real Time End-to-end 3d objection, tracking and motion forecasting with a single convolutional net
