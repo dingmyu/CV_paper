@@ -37,6 +37,9 @@
 这篇文章只有四页。related work写得比较中肯，可以参考。Monocular 3D object detection is the most difficult task since it
 requires tackling the inverse geometrical problem of mapping 2D space into 3D space, in the absence of any true 3D information. Thus, top approaches rely on extra training data in order to make informed 3D estimations. Wang et al. [22] use monocular depth perception networks such as DORN [4] to generate pseudo-point clouds and then apply a state of the art LiDAR-based model [9]. ROI-10D [15] uses monocular depth estimation and lifts 2D detection into a 6D pose problem. Mono3D [1] enforces 3D candidates to lay on the ground plane, orthogonal to image plane. It also uses semantic segmentation, contextual information, object size, shape and location priors. Deep3DBox [16] uses geometric constraints by tightly fitting the 3D bounding box into the 2D box. Xu et al. [23] use multi-level fusion of Faster R-CNN and depth features for 3D object detection. Advances in stereo and monocular depth estimation could provide accurate 3D information, which could greatly improve non-LiDAR based 3D object detection systems. 这篇文章没用depth信息。采用了deep3dbox的思路通过两阶段算了一个解，但是position是算出来的，所以不准。这篇文章又通过前面结果回归出了一个新的position，并提出了一个loss，这个loss感觉是postion的三个维度通过角度投影过后的值的一个加权平均。
 
+### Monocular 3d object detection and box fitting trained end-to-end using intersection-over-union loss
+19年6月。这篇文章看起来有点厉害，kitti上13的结果，比monogr要高。思想是说直接回归3d参数是不准的，包括loss和梯度方向模型都不好学，因此2d上预测了bbox和3d的八个点以及depth，通过这些信息再预测3d box fitting。提出了几种loss/算梯度的方法，然后也利用了uncertainty，貌似是通过学习一个小的，下采样五倍的一个方框seg map来实现的。
+
 ## 双目
 
 ### 3D object proposals using stereo imagery for accurate object class detection
