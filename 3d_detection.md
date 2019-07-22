@@ -55,6 +55,10 @@ cvpr2019,这篇争议最大的点是，方法都是别人的，它真的只是�
 ### OBject detection and classification in occupancy grid maps using deep convolutional networks
 2018,将点云数据转换成occupancy grid maps，其实就是多种俯视图的特征，可以看论文上的图，然后将多种俯视图特征利用2d detector来检测，在kitti bird‘s eye view上测试。
 
+###
+这篇和上面那篇是一个套路的，搞了grid maps，此外说学习uncertainty是有用的。因此学了一个（角度上的？）uncertainty。（参考另一篇论文）通过最大和最小角度可以可视化出一个95%概率的3d壳，后面有些讨论。感觉这两篇都是水文。
+
+
 ## lidar+ rgb
 
 ### multi-view 3d object detection network for autonomous driving
@@ -63,3 +67,4 @@ cvpr2019,这篇争议最大的点是，方法都是别人的，它真的只是�
 
 ### Joint 3D proposal generation and object detection from view aggregation
 这篇文章写得贼乱。同时用了原图和lidar俯视图和3d anchor grid。rpn后fusion然后经过nms得到检测结果。没仔细看
+
