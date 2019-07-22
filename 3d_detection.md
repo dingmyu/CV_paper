@@ -30,6 +30,13 @@
 ### multi-level fusion based 3d object detection from monocular images
 武大的。这篇主要贡献应该是先学了个单目depth，然后把depth和rgb结合提取特征，通过depth还生成了电云，也直接pooling提取特征，然后和RGB的特征融合。
 
+###
+2019.4.10.慕尼黑工业。深度好文。本文先使用一个2d detection网路提取bbox，然后结合单目depth 提出一个可微的ROI lifting操作，搞出了3d bbox的八个点。pose用四元数q加上whl来表示，根据bbox的位置x，y和深度z得到了八个点，然后学这八个点就可以了。用了warm up。文章指出了以自我为中心和非自我为中心的不同之处，没太看懂。然后还搞了学一个mesh的shape，并看了看shape空间内feature意义，貌似是这样？
+
+### Shift r-cnn
+这篇文章只有四页。related work写得比较中肯，可以参考。Monocular 3D object detection is the most difficult task since it
+requires tackling the inverse geometrical problem of mapping 2D space into 3D space, in the absence of any true 3D information. Thus, top approaches rely on extra training data in order to make informed 3D estimations. Wang et al. [22] use monocular depth perception networks such as DORN [4] to generate pseudo-point clouds and then apply a state of the art LiDAR-based model [9]. ROI-10D [15] uses monocular depth estimation and lifts 2D detection into a 6D pose problem. Mono3D [1] enforces 3D candidates to lay on the ground plane, orthogonal to image plane. It also uses semantic segmentation, contextual information, object size, shape and location priors. Deep3DBox [16] uses geometric constraints by tightly fitting the 3D bounding box into the 2D box. Xu et al. [23] use multi-level fusion of Faster R-CNN and depth features for 3D object detection. Advances in stereo and monocular depth estimation could provide accurate 3D information, which could greatly improve non-LiDAR based 3D object detection systems. 这篇文章没用depth信息。采用了deep3dbox的思路通过两阶段算了一个解，但是position是算出来的，所以不准。这篇文章又通过前面结果回归出了一个新的position，并提出了一个loss，这个loss感觉是postion的三个维度通过角度投影过后的值的一个加权平均。
+
 ## 双目
 
 ### 3D object proposals using stereo imagery for accurate object class detection
@@ -43,9 +50,6 @@ cvpr2019,这篇争议最大的点是，方法都是别人的，它真的只是�
 
 ### Pseudo-Lidar++
 2019，康奈尔的。这篇延续了pseudo lidar的套路。主要有两个创新点，第一是说通过disparity来估计depth，越远处偏差越大，这是系统误差不是随机误差，因此要直接估计depth，在PSMnet基础上改进的。第二是说做了一个depth的优化，通过便宜的4线lidar的稀疏点云，保留生成的pseudo-lidar的shape，通过knn的方式把一个点拉过来，周围的也跟着过来，大概是这种思想，得到了更好的depth。后面还是相同的套路了。
-
-###
-2019.4.10.慕尼黑工业。深度好文。本文先使用一个2d detection网路提取bbox，然后结合单目depth 提出一个可微的ROI lifting操作，搞出了3d bbox的八个点。pose用四元数q加上whl来表示，根据bbox的位置x，y和深度z得到了八个点，然后学这八个点就可以了。用了warm up。文章指出了以自我为中心和非自我为中心的不同之处，没太看懂。然后还搞了学一个mesh的shape，并看了看shape空间内feature意义，貌似是这样？
 
 ## lidar
 
