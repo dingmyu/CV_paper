@@ -44,6 +44,9 @@ cvpr2019,这篇争议最大的点是，方法都是别人的，它真的只是�
 ### Pseudo-Lidar++
 2019，康奈尔的。这篇延续了pseudo lidar的套路。主要有两个创新点，第一是说通过disparity来估计depth，越远处偏差越大，这是系统误差不是随机误差，因此要直接估计depth，在PSMnet基础上改进的。第二是说做了一个depth的优化，通过便宜的4线lidar的稀疏点云，保留生成的pseudo-lidar的shape，通过knn的方式把一个点拉过来，周围的也跟着过来，大概是这种思想，得到了更好的depth。后面还是相同的套路了。
 
+###
+2019.4.10.慕尼黑工业。深度好文。本文先使用一个2d detection网路提取bbox，然后结合单目depth 提出一个可微的ROI lifting操作，搞出了3d bbox的八个点。pose用四元数q加上whl来表示，根据bbox的位置x，y和深度z得到了八个点，然后学这八个点就可以了。用了warm up。文章指出了以自我为中心和非自我为中心的不同之处，没太看懂。然后还搞了学一个mesh的shape，并看了看shape空间内feature意义，貌似是这样？
+
 ## lidar
 
 ### Fast and Furious: Real Time End-to-end 3d objection, tracking and motion forecasting with a single convolutional net
