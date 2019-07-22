@@ -44,7 +44,7 @@ requires tackling the inverse geometrical problem of mapping 2D space into 3D sp
 只有两页，文章讨论了几种3d形式，关键点啊，方框啊，不规则方框，视锥之类的。有一个思想可以借鉴，解决遮挡问题。主动的把车挡住一小块，让网络去预测被挡住的位置的关键点，不知道是不是可行。
 
 ### Eliminating the Blind Spot: Adapting 3D object detection and monocular depth estimation to 360 panoramic imagery
-这篇文章主要就是把原来的前视摄像头给改成了全景图片，做了depth和3d detection两个任务。提出了一个数据集。讲解了一下全景摄像头的内参等等知识，根据这些，套用已有方法，还用了domain transter（cycle gan）来对全景图片做检测。
+ECCV 2018。这篇文章主要就是把原来的前视摄像头给改成了全景图片，做了depth和3d detection两个任务。提出了一个数据集。讲解了一下全景摄像头的内参等等知识，根据这些，套用已有方法，还用了domain transter（cycle gan）来对全景图片做检测。
 
 
 ## 双目
