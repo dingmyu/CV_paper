@@ -1,4 +1,4 @@
-## 单目
+## 单目/双目
 
 ### 3D bounding box estimation using deep learning and geometry
 > 开山之作?是使用现成的2d detector, 把图里的车抠出来学它的旋转和维度(长宽高), 然后根据2d和3d的关系, 算出3d bbox的位置(location).精度不高但是数学可以借鉴.可以考虑加可学习的权重, 将loss反传回detection model.
@@ -30,11 +30,19 @@
 ### multi-level fusion based 3d object detection from monocular images
 武大的。这篇主要贡献应该是先学了个单目depth，然后把depth和rgb结合提取特征，通过depth还生成了电云，也直接pooling提取特征，然后和RGB的特征融合。
 
+## 双目
+
+### 3D object proposals using stereo imagery for accurate object class detection
+17年的。这篇文章是想要尽量多利用信息，context信息，freespace等等。因此proposal之后还外扩一圈提取信息和proposal的信息结合。这篇文章是调研了很多传统方法，使用双目或者lidar（voxel）作为输入，尽量多的利用了特征，搞了个能量函数，提取3d proposal。和目前最新的方法都不是一个套路了。
+
 ### Pseudo-LiDAR from Visual Depth Estimation: Bridging the Gap in 3D Object Detection for Autonomous Driving
 这篇争议最大的点是，方法都是别人的，它真的只是“bridging”了一下。首先用stereo的方法得到了双目深度，然后用公式转成伪点云，再用lidar detection的方法跑个检测，走通了双目3d检测的一条新的pipeline。
 
 ### monocular 3d object detection with pseudo-lidar point cloud
 CMU的。这篇和pseudo lidar那篇有异曲同工之妙，和洪伟的paper也有点像。是提取了depth，然后根据depth生成pesudo lidar，然后根据instance segmentation从中抠出视锥来，根据视锥学习一个3d detection，这里用了二阶段，还学了一个残差，最后搞了一个2d-3d consistency，这篇文章一看流程图就懂了。
+
+### Pseudo-Lidar++
+康奈尔的。这篇延续了pseudo lidar的套路。主要有两个创新点，第一是说通过disparity来估计depth，越远处偏差越大，这是系统误差不是随机误差，因此要直接估计depth，在PSMnet基础上改进的。第二是说做了一个depth的优化，通过便宜的4线lidar的稀疏点云，保留生成的pseudo-lidar的shape，通过knn的方式把一个点拉过来，周围的也跟着过来，大概是这种思想，得到了更好的depth。后面还是相同的套路了。
 
 ## lidar
 
