@@ -40,6 +40,9 @@ requires tackling the inverse geometrical problem of mapping 2D space into 3D sp
 ### Monocular 3d object detection and box fitting trained end-to-end using intersection-over-union loss
 19年6月。这篇文章看起来有点厉害，kitti上13的结果，比monogr要高。思想是说直接回归3d参数是不准的，包括loss和梯度方向模型都不好学，因此2d上预测了bbox和3d的八个点以及depth，通过这些信息再预测3d box fitting。提出了几种loss/算梯度的方法，然后也利用了uncertainty，貌似是通过学习一个小的，下采样五倍的一个方框seg map来实现的。
 
+# towards scene understanding with detailed 3D object representations
+只有两页，文章讨论了几种3d形式，关键点啊，方框啊，不规则方框，视锥之类的。有一个思想可以借鉴，解决遮挡问题。主动的把车挡住一小块，让网络去预测被挡住的位置的关键点，不知道是不是可行。
+
 ## 双目
 
 ### 3D object proposals using stereo imagery for accurate object class detection
