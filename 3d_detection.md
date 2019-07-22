@@ -49,6 +49,8 @@ CMU的。这篇和pseudo lidar那篇有异曲同工之妙，和洪伟的paper也
 ### Fast and Furious: Real Time End-to-end 3d objection, tracking and motion forecasting with a single convolutional net
 雷达点云,多帧结合,统一坐标系,使用高度作为feature提取voxel.多帧预测bbox然后根据score和iou进行平均融合.提出前融合后融合这两种常见的融合方案.
 
+### OBject detection and classification in occupancy grid maps using deep convolutional networks
+将点云数据转换成occupancy grid maps，其实就是多种俯视图的特征，可以看论文上的图，然后将多种俯视图特征利用2d detector来检测，在kitti bird‘s eye view上测试。
 
 ## lidar+ rgb
 
