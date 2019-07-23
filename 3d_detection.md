@@ -30,7 +30,7 @@
 ### multi-level fusion based 3d object detection from monocular images
 武大的。这篇主要贡献应该是先学了个单目depth，然后把depth和rgb结合提取特征，通过depth还生成了电云，也直接pooling提取特征，然后和RGB的特征融合。
 
-###
+### ROI-10D: Monocular Lifting of 2D Detection to 6D Pose and Metric Shape
 2019.4.10.慕尼黑工业。深度好文。本文先使用一个2d detection网路提取bbox，然后结合单目depth 提出一个可微的ROI lifting操作，搞出了3d bbox的八个点。pose用四元数q加上whl来表示，根据bbox的位置x，y和深度z得到了八个点，然后学这八个点就可以了。用了warm up。文章指出了以自我为中心和非自我为中心的不同之处，没太看懂。然后还搞了学一个mesh的shape，并看了看shape空间内feature意义，貌似是这样？
 
 ### Shift r-cnn
@@ -69,7 +69,7 @@ cvpr2019,这篇争议最大的点是，方法都是别人的，它真的只是�
 ### OBject detection and classification in occupancy grid maps using deep convolutional networks
 2018,将点云数据转换成occupancy grid maps，其实就是多种俯视图的特征，可以看论文上的图，然后将多种俯视图特征利用2d detector来检测，在kitti bird‘s eye view上测试。
 
-###
+### Capturing Object Detection Uncertainty in Multi-Layer Grid Maps
 这篇和上面那篇是一个套路的，搞了grid maps，此外说学习uncertainty是有用的。因此学了一个（角度上的？）uncertainty。（参考另一篇论文）通过最大和最小角度可以可视化出一个95%概率的3d壳，后面有些讨论。感觉这两篇都是水文。
 
 
