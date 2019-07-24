@@ -56,7 +56,10 @@ cvpr。这篇是车和object都可以做。提了roi之后回归box和3d中心�
 2015,3dop同一个作者,这个就是把双目改成了单目.然后使用3d proposal,投影回2d,根据2d提特征,对proposal进行score并回归.这篇还是利用了地平面,shape,分割,等信息,follow 3dop.
 
 ### Are cars just 3d boxes? - jointly estimating the 3d shape of multiple objects
-2015,苏黎世理工.这篇是用线条组成的car模型来做,先学coarse的3d box再refine,相比bbox描绘更精准,bird's eye view也更准了.主要参考[40]的一个方法,也用了cad model学shape,还学了一个遮挡mask.文章通过概率模型来model,使用的多类别随机森林.
+2012?,苏黎世理工.这篇是用线条组成的car模型来做,相当于利用了shape先验,先学coarse的3d box再refine,相比bbox描绘更精准,bird's eye view也更准了.主要参考[40]的一个方法,也用了cad model学shape,还学了一个遮挡mask,用来表示object之间的遮挡信息.文章通过概率模型来model,使用的多类别随机森林.
+
+### Data-driven 3d voxel patterns for object category recognition
+2015.这篇和上篇一样也是利用3d先验,不同的是使用3dvoxel,把原图和cad model对应起来,然后渲染3d投影到2d,根据前后顺序确定遮挡,然后搞一个2d遮挡mask,再搞3d遮挡voxel,然后学这个东西.测试的时候也是先2d detection,再出带有遮挡的segmentation mask,再出3d location.
 
 ## 双目
 
