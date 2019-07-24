@@ -46,6 +46,8 @@ requires tackling the inverse geometrical problem of mapping 2D space into 3D sp
 ### Eliminating the Blind Spot: Adapting 3D object detection and monocular depth estimation to 360 panoramic imagery
 ECCV 2018。这篇文章主要就是把原来的前视摄像头给改成了全景图片，做了depth和3d detection两个任务。提出了一个数据集。讲解了一下全景摄像头的内参等等知识，根据这些，套用已有方法，还用了domain transter（cycle gan）来对全景图片做检测。
 
+### Stereo R-CNN based 3D Object detection for autonomous Driving
+参考文献写得不错。双目搞了两个ROI，gt是取的左右框的交集，然后左右的特征进行concat学习3d box部分参数，后面也学了一下特征点（四个关键点，都在底边）。之后用了3d box estimator通过关键点和3d参数来解出position，然后是3d box alignment，是一个重投影误差用来求解最佳中心depth。
 
 ## 双目
 
