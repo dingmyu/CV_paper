@@ -46,8 +46,8 @@ requires tackling the inverse geometrical problem of mapping 2D space into 3D sp
 ### Eliminating the Blind Spot: Adapting 3D object detection and monocular depth estimation to 360 panoramic imagery
 ECCV 2018。这篇文章主要就是把原来的前视摄像头给改成了全景图片，做了depth和3d detection两个任务。提出了一个数据集。讲解了一下全景摄像头的内参等等知识，根据这些，套用已有方法，还用了domain transter（cycle gan）来对全景图片做检测。
 
-### Stereo R-CNN based 3D Object detection for autonomous Driving
-参考文献写得不错。双目搞了两个ROI，gt是取的左右框的交集，然后左右的特征进行concat学习3d box部分参数，后面也学了一下特征点（四个关键点，都在底边）。之后用了3d box estimator通过关键点和3d参数来解出position，然后是3d box alignment，是一个重投影误差用来求解最佳中心depth。
+### 3D-RCNN: instance-level 3d object reconstruction via render-and-compare
+cvpr。这篇是车和object都可以做。提了roi之后回归box和3d中心投影点，然后指出了同样大的人用不同姿势出来的roi feature形状是不一样的，因此学了一组crop参数并concat到了roi feature里，然后学习shape参数和pose参数。根据cad model训练了的shape参数，通过这个参数把车给渲染出来和原图算loss。这一步用的还是可微的渲染。
 
 ## 双目
 
@@ -62,6 +62,11 @@ cvpr2019,这篇争议最大的点是，方法都是别人的，它真的只是�
 
 ### Pseudo-Lidar++
 2019，康奈尔的。这篇延续了pseudo lidar的套路。主要有两个创新点，第一是说通过disparity来估计depth，越远处偏差越大，这是系统误差不是随机误差，因此要直接估计depth，在PSMnet基础上改进的。第二是说做了一个depth的优化，通过便宜的4线lidar的稀疏点云，保留生成的pseudo-lidar的shape，通过knn的方式把一个点拉过来，周围的也跟着过来，大概是这种思想，得到了更好的depth。后面还是相同的套路了。
+
+
+### Stereo R-CNN based 3D Object detection for autonomous Driving
+cvpr2019.参考文献写得不错。双目搞了两个ROI，gt是取的左右框的交集，然后左右的特征进行concat学习3d box部分参数，后面也学了一下特征点（四个关键点，都在底边）。之后用了3d box estimator通过关键点和3d参数来解出position，然后是3d box alignment，是一个重投影误差用来求解最佳中心depth。
+
 
 ## lidar
 
