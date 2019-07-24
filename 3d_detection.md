@@ -55,7 +55,7 @@ cvpr。这篇是车和object都可以做。提了roi之后回归box和3d中心�
 ## 双目
 
 ### 3D object proposals using stereo imagery for accurate object class detection
-17年的。这篇文章是想要尽量多利用信息，context信息，freespace等等。因此proposal之后还外扩一圈提取信息和proposal的信息结合。这篇文章是调研了很多传统方法，使用双目或者lidar（voxel）作为输入，尽量多的利用了特征，搞了个能量函数，提取3d proposal。和目前最新的方法都不是一个套路了。
+3DOP,pami17年的,原文是3d object proposals for accurate object class detection, nips15。这篇文章是想要尽量多利用信息，context信息，freespace等等。因此proposal之后还外扩一圈提取信息和proposal的信息结合。这篇文章是调研了很多传统方法，使用双目或者lidar（voxel）作为输入，尽量多的利用了特征，搞了个能量函数，提取3d proposal。和目前最新的方法都不是一个套路了。
 
 ### Pseudo-LiDAR from Visual Depth Estimation: Bridging the Gap in 3D Object Detection for Autonomous Driving
 cvpr2019,这篇争议最大的点是，方法都是别人的，它真的只是“bridging”了一下。首先用stereo的方法得到了双目深度，然后用公式转成伪点云，再用lidar detection的方法跑个检测，走通了双目3d检测的一条新的pipeline。
