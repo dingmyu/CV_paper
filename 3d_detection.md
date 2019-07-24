@@ -49,6 +49,9 @@ ECCV 2018。这篇文章主要就是把原来的前视摄像头给改成了全�
 ### 3D-RCNN: instance-level 3d object reconstruction via render-and-compare
 cvpr。这篇是车和object都可以做。提了roi之后回归box和3d中心投影点，然后指出了同样大的人用不同姿势出来的roi feature形状是不一样的，因此学了一组crop参数并concat到了roi feature里，然后学习shape参数和pose参数。根据cad model训练了的shape参数，通过这个参数把车给渲染出来和原图算loss。这一步用的还是可微的渲染。
 
+### 3d object detection and viewpoint estimation with a deformable 3d cuboid model
+12年的文章.是基于DPM来做的,具体就是把一个车拆成前边侧边上面,叫做aspect.然后每一面使用share部分weight的模型来做.然后利用了deformation model (stitching point).
+
 ## 双目
 
 ### 3D object proposals using stereo imagery for accurate object class detection
