@@ -52,6 +52,9 @@ cvpr。这篇是车和object都可以做。提了roi之后回归box和3d中心�
 ### 3d object detection and viewpoint estimation with a deformable 3d cuboid model
 12年的文章.是基于DPM来做的,具体就是把一个车拆成前边侧边上面,叫做aspect.然后每一面使用share部分weight的模型来做.然后利用了deformation model (stitching point).
 
+### Monocular 3d object detection for autonomous driving
+2015,3dop同一个作者,这个就是把双目改成了单目.然后使用3d proposal,投影回2d,根据2d提特征,对proposal进行score并回归.这篇还是利用了地平面,shape,分割,等信息,follow 3dop.
+
 ## 双目
 
 ### 3D object proposals using stereo imagery for accurate object class detection
