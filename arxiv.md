@@ -7,3 +7,6 @@ https://arxiv.org/pdf/1907.06989.pdf
 
 ### ShapeNet: An Information-Rich 3D model repository
 提出了一个CADmodel数据集,很丰富全面,除了model还标注了word part correspondence等信息.
+
+### Vehicle speed estimation using a monocular camera
+固定摄像头测速。通过检测车牌，估计车辆距离地面的高度，然后用相似三角形就可以测出距离。使用连续三帧进行测速。
