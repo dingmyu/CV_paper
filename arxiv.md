@@ -10,3 +10,9 @@ https://arxiv.org/pdf/1907.06989.pdf
 
 ### Vehicle speed estimation using a monocular camera
 固定摄像头测速。通过检测车牌，估计车辆距离地面的高度，然后用相似三角形就可以测出距离。使用连续三帧进行测速。
+
+### new efficient solution to the absolute pose problem for camera with unknown focal length and redial distortion
+这篇是一个优化问题，就像pnp问题一样。这篇是不知道焦距和径向畸变的情况下，分了平面和非平面的2d-3d correspondence来求解camera pose。
+
+### a fast minimal solver for absolute camera pose with unknown focal length and radial distortion from four planar points
+2018.这篇和上面一篇是同样的事情，不知道focal length和radial distortion的情况下通过平面上的匹配点来求解camera pose。
