@@ -76,7 +76,7 @@ ICCV2019. 欧阳万里。这篇是把depth转成了点云，然后把RGB值投�
 cvpr2019,这篇争议最大的点是，方法都是别人的，它真的只是“bridging”了一下。首先用stereo的方法得到了双目深度，然后用公式转成伪点云，再用lidar detection的方法跑个检测，走通了双目3d检测的一条新的pipeline。
 
 ### monocular 3d object detection with pseudo-lidar point cloud
-2019,CMU的。这篇和pseudo lidar那篇有异曲同工之妙，和洪伟的paper也有点像。是提取了depth，然后根据depth生成pesudo lidar，然后根据instance segmentation从中抠出视锥来，根据视锥学习一个3d detection，这里用了二阶段，还学了一个残差，最后搞了一个2d-3d consistency，这篇文章一看流程图就懂了。
+2019,CMU的。这篇和pseudo lidar那篇有异曲同工之妙，和洪伟的paper也有点像。是提取了depth，然后根据depth生成pesudo lidar，然后根据instance segmentation从中抠出视锥来，根据视锥学习一个3d detection，这里用了二阶段，还学了一个残差，最后搞了一个2d-3d consistency，这篇文章一看流程图就懂了。然后这篇文章重点参考了frustum pointnets这篇文章，还去掉了里面回归中心坐标的网络。另外在inference之后搞了个后处理，还是consistency来修改3d pose，随着深度的越大，3d参数可被更改的就越多，bound。
 
 ### Pseudo-Lidar++
 2019，康奈尔的。这篇延续了pseudo lidar的套路。主要有两个创新点，第一是说通过disparity来估计depth，越远处偏差越大，这是系统误差不是随机误差，因此要直接估计depth，在PSMnet基础上改进的。第二是说做了一个depth的优化，通过便宜的4线lidar的稀疏点云，保留生成的pseudo-lidar的shape，通过knn的方式把一个点拉过来，周围的也跟着过来，大概是这种思想，得到了更好的depth。后面还是相同的套路了。
