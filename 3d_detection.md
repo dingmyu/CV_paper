@@ -64,6 +64,9 @@ cvpr。这篇是车和object都可以做。提了roi之后回归box和3d中心�
 ### subcategory-aware convolutional neural networks for object proposals and detection
 2016, 把3dvp那套搬到了fast rcnn上,说是利用subcategory,我感觉就是多任务的思想,rpn和最后分类里加了一个3dvp的任务,用这些任务来提取heatmap,结合起来用于更好的roi,这些任务在最后的feature也会用到,这样更好提取3d信息.
 
+### Accurate Monocular 3D Object Detection via Color-Embedded 3D Reconstruction for Automonous Driving
+ICCV2019. 欧阳万里。这篇是把depth转成了点云，然后把RGB值投到了电云上，这样每个点有三维位置和三维RGB，然后根据2d的ROI根据这部分点使用pointNet来学习3d detection。作者还用了一步背景分割，根据车的平均depth把更远的当做背景，这块设了一个阈值。最后结果非常非常高，几乎达到了双目的效果。
+
 ## 双目
 
 ### 3D object proposals using stereo imagery for accurate object class detection
