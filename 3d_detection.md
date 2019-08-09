@@ -13,7 +13,7 @@
 这篇文章计算了2d bbox和一个大概的方向，然后估计了3d bbox的一个大概位置，然后把三个面分别取出来，然后alignment提取特征。然后使用了基于分类的loss代替了回归loss。想到可以用deformable convolution？把0/1 label改成了一个soft的形式。
 
 ### Monocular 3D Object Detection Leveraging Accurate Proposals and Shape Reconstruction
-这篇文章就很有意思很厉害了，对于每一个instance，文章是对其进行一个重建，相当于估计一个局部的3d点云出来。使用proposal-base的方法能够大大减小3d的search space。文章提了global和local的feature，然后估计出3d bbox的参数。同时使用估计出来的点云经过学到的位置放到3d空间，然后再投影到2d空间算一个l1 loss。因此是一个多任务学习。
+这篇文章就很有意思很厉害了，对于每一个instance，文章是对其进行一个重建，相当于估计一个局部的3d点云出来。使用proposal-base的方法能够大大减小3d的search space,还是先预测出了box大小和方向，然后结合2d box算出了position，depth通过相似三角形可以得到。文章提了global和local的feature，然后估计出3d bbox的参数。同时使用估计出来的点云经过学到的位置放到3d空间，然后再投影到2d空间算一个l1 loss。因此是一个多任务学习。文章说自己是的一个报行人和自行车成绩的，然后学习电云设置了三个loss，一个是点云之间的l1，一个是点云最后一维和depth的smooth l1，另外一个是点云投影回图像做一个smooth l1 loss，这个是不是可以利用起来，局部预测的点云和全局的depth生成点云结合，或者结合视锥等等做一个attention。
 
 ### MonoGRNet: A Geometric Reasoning Network for Monocular 3D Object Localization
 这篇文章不用额外data，单模型只用3d bbox作为监督。估了一个粗糙的depth，图片划分网格，每个网格一个depth，然后根据depth的大小关系处理了一下遮挡问题。模型输入单张rgb，使用浅层特征训练了delta location和corner的offset（个人觉得不是很make sense）。深层特征计算了instance depth和3d中心。深层特征输出大概的bbox位置后，浅层特征用来refine。
