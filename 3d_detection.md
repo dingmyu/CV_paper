@@ -31,7 +31,7 @@
 武大的。这篇主要贡献应该是先学了个单目depth，然后把depth和rgb结合提取特征，通过depth还生成了电云，也直接pooling提取特征，然后和RGB的特征融合。
 
 ### ROI-10D: Monocular Lifting of 2D Detection to 6D Pose and Metric Shape
-2019.4.10.慕尼黑工业。深度好文。本文先使用一个2d detection网路提取bbox，然后结合单目depth 提出一个可微的ROI lifting操作，搞出了3d bbox的八个点。pose用四元数q加上whl来表示，根据bbox的位置x，y和深度z得到了八个点，然后学这八个点就可以了。用了warm up。文章指出了以自我为中心和非自我为中心的不同之处，没太看懂。然后还搞了学一个mesh的shape，并看了看shape空间内feature意义，貌似是这样？
+2019.4.10.慕尼黑工业。深度好文。本文先使用一个2d detection网路提取bbox，然后结合单目depth 提出一个可微的ROI lifting操作，搞出了3d bbox的八个点。pose用四元数q加上whl来表示，根据bbox的位置x，y和深度z得到了八个点，然后学这八个点就可以了。用了warm up。文章指出了以自我为中心和非自我为中心的不同之处，意思是先按非自我中心的来学习，学完了根据预测的position来纠正角度。然后还搞了学一个mesh的shape，通过一个autoencoder学习embedding，并看了看shape空间内feature意义。通过这个把原图投影到学到的mesh上，可以用原图给mesh上色，并通过这东西做数据增强，扩展车到不同的位置上，数据增强比较有用。
 
 ### Shift r-cnn
 这篇文章只有四页。related work写得比较中肯，可以参考。Monocular 3D object detection is the most difficult task since it
