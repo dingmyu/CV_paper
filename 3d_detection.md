@@ -25,7 +25,7 @@
 这篇是搞了两个transform操作，把image feature投影到了voxel再投影到bird-eye view，然后直接在最后的feature上用高斯图进行学习，loss是l1。最后用了一个nms得到结果。结果不高，车的ap只有3.
 
 ### Mono3D++：
-这篇文章我觉得很solid的，首先related work写得很好，都可以用来参考。这篇文章是用pascal数据集构建了2d关键点，并且算了平均的3dshape，使用2d loss，2d 关键点，3d框和3dshape这些loss，通过重投影，利用了shape的先验信息。此外还学习了单目深度，貌似是通过一个patch来搞的，然后学了地平线的法线，论文的loss function看起来也合理，值得借鉴。
+这篇文章我觉得很solid的，首先related work写得很好，都可以用来参考。这篇文章是用pascal数据集构建了2d关键点，并且算了平均的3dshape，使用2d loss，2d 关键点，3d框和3dshape这些loss，通过重投影，利用了shape的先验信息。此外还学习了单目深度，貌似是通过一个patch来搞的，然后学了地平线的法线，论文的loss function看起来也合理，值得借鉴。现在没仔细看懂，有时间仔细看看。
 
 ### multi-level fusion based 3d object detection from monocular images
 武大的。这篇主要贡献应该是先学了个单目depth，然后把depth和rgb结合提取特征，通过depth还生成了电云，也直接pooling提取特征，然后和RGB的特征融合。
