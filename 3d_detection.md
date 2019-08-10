@@ -65,7 +65,10 @@ cvpr。这篇是车和object都可以做。提了roi之后回归box和3d中心�
 2016, 把3dvp那套搬到了fast rcnn上,说是利用subcategory,我感觉就是多任务的思想,rpn和最后分类里加了一个3dvp的任务,用这些任务来提取heatmap,结合起来用于更好的roi,这些任务在最后的feature也会用到,这样更好提取3d信息.
 
 ### Accurate Monocular 3D Object Detection via Color-Embedded 3D Reconstruction for Automonous Driving
-ICCV2019. 欧阳万里。这篇是把depth转成了点云，然后把RGB值投到了电云上，这样每个点有三维位置和三维RGB，然后根据2d的ROI根据这部分点使用pointNet来学习3d detection。作者还用了一步背景分割，根据车的平均depth把更远的当做背景，这块设了一个阈值。最后结果非常非常高，几乎达到了双目的效果。
+ICCV2019. 欧阳万里。这篇是把depth转成了点云，然后把RGB值投到了电云上，这样每个点有三维位置和三维RGB，然后根据2d的ROI根据这部分点使用pointNet来学习3d detection。作者还用了一步背景分割，根据车的平均depth把更远的当做背景，这块设了一个阈值。最后结果很高很高。这篇说提升比较大的部分是segmentation，还要多加dropout防止过拟合。然后region branch实际上是没什么用的，RGB branch用处也没特别大。回归的时候分了两步，第一步是先算了中心点，应该是和Fpointnet是一样的？然后align之后再算了第二步的两个loss，回归RT和八个点。单目DORN最好，双目pointnet++好像比Fpointnet还好一点。
+
+### monocular 3d object detection with pseudo-lidar point cloud
+2019,CMU的。这篇和pseudo lidar那篇有异曲同工之妙，和洪伟的paper也有点像。是提取了depth，然后根据depth生成pesudo lidar，然后根据instance segmentation从中抠出视锥来，根据视锥学习一个3d detection，这里用了二阶段，还学了一个残差，最后搞了一个2d-3d consistency，这篇文章一看流程图就懂了。然后这篇文章重点参考了frustum pointnets这篇文章，还去掉了里面回归中心坐标的网络。另外在inference之后搞了个后处理，还是consistency来修改3d pose，随着深度的越大，3d参数可被更改的就越多，bound。
 
 ## 双目
 
@@ -74,9 +77,6 @@ ICCV2019. 欧阳万里。这篇是把depth转成了点云，然后把RGB值投�
 
 ### Pseudo-LiDAR from Visual Depth Estimation: Bridging the Gap in 3D Object Detection for Autonomous Driving
 cvpr2019,这篇争议最大的点是，方法都是别人的，它真的只是“bridging”了一下。首先用stereo的方法得到了双目深度，然后用公式转成伪点云，再用lidar detection的方法跑个检测，走通了双目3d检测的一条新的pipeline。
-
-### monocular 3d object detection with pseudo-lidar point cloud
-2019,CMU的。这篇和pseudo lidar那篇有异曲同工之妙，和洪伟的paper也有点像。是提取了depth，然后根据depth生成pesudo lidar，然后根据instance segmentation从中抠出视锥来，根据视锥学习一个3d detection，这里用了二阶段，还学了一个残差，最后搞了一个2d-3d consistency，这篇文章一看流程图就懂了。然后这篇文章重点参考了frustum pointnets这篇文章，还去掉了里面回归中心坐标的网络。另外在inference之后搞了个后处理，还是consistency来修改3d pose，随着深度的越大，3d参数可被更改的就越多，bound。
 
 ### Pseudo-Lidar++
 2019，康奈尔的。这篇延续了pseudo lidar的套路。主要有两个创新点，第一是说通过disparity来估计depth，越远处偏差越大，这是系统误差不是随机误差，因此要直接估计depth，在PSMnet基础上改进的。第二是说做了一个depth的优化，通过便宜的4线lidar的稀疏点云，保留生成的pseudo-lidar的shape，通过knn的方式把一个点拉过来，周围的也跟着过来，大概是这种思想，得到了更好的depth。后面还是相同的套路了。
