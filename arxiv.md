@@ -19,3 +19,6 @@ iccv2017.解决的和上面的相同的问题，就是在上面那一篇的基�
 
 ### a fast minimal solver for absolute camera pose with unknown focal length and radial distortion from four planar points
 2018.这篇和上面一篇是同样的事情，不知道focal length和radial distortion的情况下通过平面上的匹配点来求解camera pose。
+
+### monocular 3d object detection with fake 3d box for autonomous driving
+据说是曾哥组用在senseauto中的算法，投了ECCV18，看起来没中。学习了12个关键点，然后生成了polygon，组成了一个fake 3d box。然后在这基础上根据投影关系找到了bird-eye view上的三个点，最后给一个人为规定的高度。。。。
