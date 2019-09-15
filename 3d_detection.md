@@ -103,7 +103,8 @@ cvpr2019.参考文献写得不错。双目搞了两个ROI，gt是取的左右框
 ### multi-view 3d object detection network for autonomous driving
 百度的一篇很强很大的工作.使用lidar+rgb.这篇是利用了faster-rcnn的思想,把2d的proposal改成了3d的proposal,然后投影到三个面做roi pooling,一个是lidar bv, 一个是lidar front, 一个是image.这三个分别使用不同的conv层提取特征,提取之后三个roi pooling,然后将三个特征进行了deep fusion最后进行分类回归,从而完成3d det任务.
 
-
 ### Joint 3D proposal generation and object detection from view aggregation
 这篇文章写得贼乱。同时用了原图和lidar俯视图和3d anchor grid。rpn后fusion然后经过nms得到检测结果。没仔细看
 
+### A General Pipeline for 3D Detection of Vehicles
+ICRA18年的文章。这篇文章是同时利用了image和lidar的信息。contribution是说自己可以利用2d detection的框架，把RPN之前的部分fix住，只训练后面的部分，然后多回归一个dimension，同时把lidar点投影到图像上，把框里的部分抠出来放大一点。然后貌似是和三类车的voxel model做了对比提出了3d的proposal，根据这个又进行了一步refine。
