@@ -70,6 +70,9 @@ ICCV2019. 欧阳万里。这篇是把depth转成了点云，然后把RGB值投�
 ### monocular 3d object detection with pseudo-lidar point cloud
 2019,CMU的。这篇和pseudo lidar那篇有异曲同工之妙，和洪伟的paper也有点像。是提取了depth，然后根据depth生成pesudo lidar，然后根据instance segmentation从中抠出视锥来，根据视锥学习一个3d detection，这里用了二阶段，还学了一个残差，最后搞了一个2d-3d consistency，这篇文章一看流程图就懂了。然后这篇文章重点参考了frustum pointnets这篇文章，还去掉了里面回归中心坐标的网络。另外在inference之后搞了个后处理，还是consistency来修改3d pose，随着深度的越大，3d参数可被更改的就越多，bound。
 
+### M3D-RPN: Monocular 3D Region Proposal Network for Object Detection
+单目的paper，目前仅次于欧阳万里学生那一篇。这篇是想用一阶段的办法，不需要额外的数据和额外的模型来训练单目3d detection，同时提取2d和3d的proposal。所以这篇文章的思想就是使用2d-3d rpn，定义了一些anchor，直接在这些anchor上回归2d-3d bbox。然后为了应对不同depth上的差别，提出了一个depth-aware的conv，意思就是将图片从上到下分成好多个部分，每个部分使用不同的卷积核，感觉还挺有效的，双边滤波器这里可以考虑一波了。然后作者最后通过2d-3d consistency对3d的角度进行了优化， 一般迭代8次会收敛。
+
 ## 双目
 
 ### 3D object proposals using stereo imagery for accurate object class detection
