@@ -34,3 +34,7 @@ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dB
     Good for reusing compute engine instance states with new instances
     Available across different projects
     Can't be created for running instances(unless you use --force flag)
+
+7. github 常用命令
+git pull origin res12
+git branch --set-upstream-to=origin/res12 double_loss
