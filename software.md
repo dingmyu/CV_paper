@@ -37,6 +37,7 @@ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dB
 
 7. github 常用命令
 git pull origin res12
+
 git branch --set-upstream-to=origin/res12 double_loss
 
 git commit --amend
