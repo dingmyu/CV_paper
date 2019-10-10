@@ -92,7 +92,13 @@ cvpr2019.参考文献写得不错。双目搞了两个ROI，gt是取的左右框
 ## lidar
 
 ### PointNet++
-非常solid啊。是把所有的点划分成有overlap的regions，然后提取局部特征。（类似CNN的share weights的思想。）采用了最远距离法选了一些中心点，然后尽量选了大范围的neighborhood，选点提特征用mlp，
+非常solid啊。是把所有的点划分成有overlap的regions，然后提取局部特征。（类似CNN的share weights的思想。）采用了最远距离法选了一些中心点，然后尽量选了大范围的neighborhood（N个点，K个neighbor），选点提特征用mlp和pointnet一样。相当于用了层次的pointnet，每次都sampling & grouping，最后用pointnet+mlp分类或者，咋来的咋回去，从少的点插值回多的点，用来做分割。使用了multi-resolution grouping。
+
+### Frustum pointnets
+一张图经过2d detection，模型是固定的，是在coco上pretrain后到kitti上finetune的模型。把视锥取出来（需要用内参和depth），然后根据其类别对其中的点做了一个segmentation,使用point。然后取出剩下的点进行3d回归，其中使用了一个Tnet来回归中心点，其他的相当于学习了一个残差，这个东西为啥居然会很有用呢。loss上也加了八个角点回归的loss。
+
+### Frustum ConvNet
+和上一篇一样的思路，还是取了一个视锥出来，思想是视锥不同深度切块，都用pointnet来学了一个特征，然后把这些特征concat起来再用Fully Convolution Network和detect header进行回归。
 
 ### Fast and Furious: Real Time End-to-end 3d objection, tracking and motion forecasting with a single convolutional net
 雷达点云,多帧结合,统一坐标系,使用高度作为feature提取voxel.多帧预测bbox然后根据score和iou进行平均融合.提出前融合后融合这两种常见的融合方案.
@@ -114,3 +120,9 @@ cvpr2019.参考文献写得不错。双目搞了两个ROI，gt是取的左右框
 
 ### A General Pipeline for 3D Detection of Vehicles
 ICRA18年的文章。这篇文章是同时利用了image和lidar的信息。contribution是说自己可以利用2d detection的框架，把RPN之前的部分fix住，只训练后面的部分，然后多回归一个dimension，同时把lidar点投影到图像上，把框里的部分抠出来放大一点。然后貌似是和三类车的voxel model做了对比提出了3d的proposal，根据这个又进行了一步refine。
+
+### Deep Continuous Fusion for Multi-Sensor 3D Object Detection
+同时用了lidar和rgb，把他们的特征都投到了俯视图上。具体来说，是俯视图上的每一个点，先找和它最近的一些lidar点，找到了之后把这些lidar点投到RGB平面上，然后可以把RGB平面上这些点的feature拿出来，和他们的3d位置一起使用mlp来作为俯视图的特征。所以图片每经过几个resblock就可以提取特征转到俯视图，和lidar投的俯视图特征结合（还有一个BEV net），最后俯视图上搞一个detection header FPN。训练时使用了dataaug，对图片和lidar都进行aug，并调整矩阵使其对齐。
+
+### Multi-Task Multi-Sensor Fusion for 3D object Detection
+上一篇工作的扩展，使用了multi-task，感觉coding挺厉害的。除了23D detection，还加了depth completion和mapping的任务。lidar online mapping估计地平面，然后投影出BEV图。利用BEV图和RGB image使用上文的方法进行fusion并第一阶段估计了一些3dbox。同时rgb做了depth completion并生成了plidar，这个也被用到了fusion里面。然后又第二阶段，同时利用rgb和fusion之后的feature提取roi并concat到一起，做一个2d和3d的refinement。我的方法可以借鉴他这个第二阶段啊，plidar的俯视图feature不知道如何。
