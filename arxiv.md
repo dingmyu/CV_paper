@@ -14,7 +14,7 @@ https://arxiv.org/pdf/1907.06989.pdf
 ### new efficient solution to the absolute pose problem for camera with unknown focal length and redial distortion
 这篇是一个优化问题，就像pnp问题一样。这篇是不知道焦距和径向畸变的情况下，分了平面和非平面的2d-3d correspondence来求解camera pose。
 
-# making minimal solvers for absolute pose estimation compact and robust
+### making minimal solvers for absolute pose estimation compact and robust
 iccv2017.解决的和上面的相同的问题，就是在上面那一篇的基础上进行的改进。
 
 ### a fast minimal solver for absolute camera pose with unknown focal length and radial distortion from four planar points
