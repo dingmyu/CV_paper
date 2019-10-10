@@ -91,6 +91,9 @@ cvpr2019.参考文献写得不错。双目搞了两个ROI，gt是取的左右框
 
 ## lidar
 
+### PointNet++
+非常solid啊。是把所有的点划分成有overlap的regions，然后提取局部特征。（类似CNN的share weights的思想。）采用了最远距离法选了一些中心点，然后尽量选了大范围的neighborhood，选点提特征用mlp，
+
 ### Fast and Furious: Real Time End-to-end 3d objection, tracking and motion forecasting with a single convolutional net
 雷达点云,多帧结合,统一坐标系,使用高度作为feature提取voxel.多帧预测bbox然后根据score和iou进行平均融合.提出前融合后融合这两种常见的融合方案.
 
