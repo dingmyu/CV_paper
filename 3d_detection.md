@@ -109,6 +109,9 @@ cvpr2019.参考文献写得不错。双目搞了两个ROI，gt是取的左右框
 ### Capturing Object Detection Uncertainty in Multi-Layer Grid Maps
 2019.1,这篇和上面那篇是一个套路的，搞了grid maps，此外说学习uncertainty是有用的。因此学了一个（角度上的？）uncertainty。（参考另一篇论文）通过最大和最小角度可以可视化出一个95%概率的3d壳，后面有些讨论。感觉这两篇都是水文。
 
+### PointRCNN: 3D Object Proposal Generation and Detection from Point Cloud
+少帅的paper，只用了lidar，先做了bin-based 3d box generation再refine，看图二。首先对于每个点过了point cloud autoencoder。然后bin-based box generation，并进行了前景的分割。然后把box取出来，前景的点利用其semantic information和其spatial information（转换到正则坐标下），concat起来经过box refinement和confidence prediction。
+
 
 ## lidar+ rgb
 
@@ -116,7 +119,7 @@ cvpr2019.参考文献写得不错。双目搞了两个ROI，gt是取的左右框
 百度的一篇很强很大的工作.使用lidar+rgb.这篇是利用了faster-rcnn的思想,把2d的proposal改成了3d的proposal,然后投影到三个面做roi pooling,一个是lidar bv, 一个是lidar front, 一个是image.这三个分别使用不同的conv层提取特征,提取之后三个roi pooling,然后将三个特征进行了deep fusion最后进行分类回归,从而完成3d det任务.
 
 ### Joint 3D proposal generation and object detection from view aggregation
-这篇文章写得贼乱。同时用了原图和lidar俯视图和3d anchor grid。rpn后fusion然后经过nms得到检测结果。没仔细看
+AVOD。这篇文章写得贼乱。同时用了原图和lidar俯视图和3d anchor grid。rpn后fusion然后经过nms得到检测结果。没仔细看
 
 ### A General Pipeline for 3D Detection of Vehicles
 ICRA18年的文章。这篇文章是同时利用了image和lidar的信息。contribution是说自己可以利用2d detection的框架，把RPN之前的部分fix住，只训练后面的部分，然后多回归一个dimension，同时把lidar点投影到图像上，把框里的部分抠出来放大一点。然后貌似是和三类车的voxel model做了对比提出了3d的proposal，根据这个又进行了一步refine。
