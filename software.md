@@ -41,3 +41,11 @@ git pull origin res12
 git branch --set-upstream-to=origin/res12 double_loss
 
 git commit --amend
+
+git stash
+
+git stash apply
+
+8. pytorch 多卡训练
+如果单进程，num_workers = 0 的话，可以考虑在dataloader里就加上.cuda()，这样显存完全均衡的。
+如果num_worker不为0，使用多进程训练会快，但是dataloader就需要完全放到cpu上，进网络之前.cuda()让pytorch分配。
