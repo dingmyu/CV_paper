@@ -1,4 +1,4 @@
-1.Ghostscript
+1. Ghostscript
 PostScipt 语言和pdf解释器,压缩pdf用
 
 安装
