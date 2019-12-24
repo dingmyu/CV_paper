@@ -52,6 +52,9 @@
     git merge upstream/master
     git log
     git push origin master
+    
+    git update-index --assume-unchanged xxx
+    git rm --cached xxx
 
 
 8. pytorch 多卡训练
